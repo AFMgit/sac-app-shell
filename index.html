@@ -2,3 +2,48 @@
 
 <meta name="apple-mobile-web-app-title" content="Social Authority Collective">
 
+<script>
+(function () {
+  // Detect standalone (Home Screen launch)
+  var isStandalone =
+    window.navigator.standalone === true ||
+    (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+
+  // If launched from Home Screen → redirect immediately
+  if (isStandalone) {
+    window.location.replace("https://app.socialauthoritycollective.com");
+    return;
+  }
+
+  // Otherwise, stay on shell and show instructions
+  document.addEventListener("DOMContentLoaded", function () {
+    document.body.style.margin = "0";
+    document.body.style.background = "#000";
+    document.body.style.color = "#fff";
+    document.body.style.fontFamily =
+      "-apple-system, BlinkMacSystemFont, system-ui, Segoe UI, Roboto, Arial";
+
+    document.body.innerHTML = `
+      <div style="padding:28px; max-width:420px; margin:0 auto; line-height:1.4;">
+        <h2 style="margin:0 0 10px 0;">Add Social Authority to your Home Screen</h2>
+        <ol style="margin:0 0 18px 18px; padding:0;">
+          <li>Tap the <b>Share</b> button in Safari</li>
+          <li>Select <b>Add to Home Screen</b></li>
+          <li>Then open it from your Home Screen</li>
+        </ol>
+        <button id="openNow"
+          style="font-size:16px; padding:12px 16px; border-radius:10px;
+                 border:0; background:#111; color:#fff;">
+          Open Community Now
+        </button>
+      </div>
+    `;
+
+    document.getElementById("openNow").addEventListener("click", function () {
+      window.location.href = "https://app.socialauthoritycollective.com";
+    });
+  });
+})();
+</script>
+
+
