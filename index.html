@@ -1,49 +1,67 @@
-<title>Social Authority Collective</title>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<meta name="apple-mobile-web-app-title" content="Social Authority Collective">
+  <title>Social Authority</title>
+  <meta name="apple-mobile-web-app-title" content="Social Authority" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-<script>
-(function () {
-  // Detect standalone (Home Screen launch)
-  var isStandalone =
-    window.navigator.standalone === true ||
-    (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+  <!-- Absolute icon URLs (prevents iOS fallback to "S") -->
+  <link rel="apple-touch-icon" sizes="180x180" href="https://shell.socialauthoritycollective.com/apple-touch-icon.png" />
+  <link rel="apple-touch-icon-precomposed" href="https://shell.socialauthoritycollective.com/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="https://shell.socialauthoritycollective.com/apple-touch-icon.png" />
 
-  // If launched from Home Screen → redirect immediately
-  if (isStandalone) {
-    window.location.replace("https://app.socialauthoritycollective.com");
-    return;
-  }
+  <style>
+    body{
+      margin:0;
+      background:#000;
+      color:#fff;
+      font-family:-apple-system,BlinkMacSystemFont,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:100vh;
+      text-align:center;
+    }
+    .wrap{max-width:420px;padding:28px;line-height:1.4;}
+    button{
+      font-size:16px;padding:12px 16px;border-radius:10px;border:0;
+      background:#111;color:#fff;
+    }
+  </style>
+</head>
 
-  // Otherwise, stay on shell and show instructions
-  document.addEventListener("DOMContentLoaded", function () {
-    document.body.style.margin = "0";
-    document.body.style.background = "#000";
-    document.body.style.color = "#fff";
-    document.body.style.fontFamily =
-      "-apple-system, BlinkMacSystemFont, system-ui, Segoe UI, Roboto, Arial";
+<body>
+  <div class="wrap" id="content">Opening Social Authority…</div>
 
-    document.body.innerHTML = `
-      <div style="padding:28px; max-width:420px; margin:0 auto; line-height:1.4;">
+  <script>
+    (function () {
+      var isStandalone =
+        window.navigator.standalone === true ||
+        (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+
+      if (isStandalone) {
+        window.location.replace("https://app.socialauthoritycollective.com");
+        return;
+      }
+
+      document.getElementById("content").innerHTML = `
         <h2 style="margin:0 0 10px 0;">Add Social Authority to your Home Screen</h2>
         <ol style="margin:0 0 18px 18px; padding:0;">
           <li>Tap the <b>Share</b> button in Safari</li>
           <li>Select <b>Add to Home Screen</b></li>
           <li>Then open it from your Home Screen</li>
         </ol>
-        <button id="openNow"
-          style="font-size:16px; padding:12px 16px; border-radius:10px;
-                 border:0; background:#111; color:#fff;">
-          Open Community Now
-        </button>
-      </div>
-    `;
+        <button id="openNow">Open Community Now</button>
+      `;
 
-    document.getElementById("openNow").addEventListener("click", function () {
-      window.location.href = "https://app.socialauthoritycollective.com";
-    });
-  });
-})();
-</script>
-
-
+      document.getElementById("openNow").addEventListener("click", function () {
+        window.location.href = "https://app.socialauthoritycollective.com";
+      });
+    })();
+  </script>
+</body>
+</html>
