@@ -18,7 +18,34 @@
 </head>
 
 <body>
-  <p>Social Authority</p>
+  <div class="wrap" id="content">Opening Social Authority…</div>
+
+  <script>
+    (function () {
+      var isStandalone =
+        window.navigator.standalone === true ||
+        (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+
+      if (isStandalone) {
+        window.location.replace("https://app.socialauthoritycollective.com");
+        return;
+      }
+
+      document.getElementById("content").innerHTML = `
+        <h2 style="margin:0 0 10px 0;">Add Social Authority to your Home Screen</h2>
+        <ol style="margin:0 0 18px 18px; padding:0;">
+          <li>Tap the <b>Share</b> button in Safari</li>
+          <li>Select <b>Add to Home Screen</b></li>
+          <li>Then open it from your Home Screen</li>
+        </ol>
+        <button id="openNow">Open Community Now</button>
+      `;
+
+      document.getElementById("openNow").addEventListener("click", function () {
+        window.location.href = "https://app.socialauthoritycollective.com";
+      });
+    })();
+  </script>
 </body>
 </html>
 
