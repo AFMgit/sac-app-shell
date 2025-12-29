@@ -27,7 +27,7 @@
         (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
 
       if (isStandalone) {
-        window.location.replace("https://app.socialauthoritycollective.com/login");
+        window.location.replace("https://app.socialauthoritycollective.com/communities/");
         return;
       }
 
@@ -42,7 +42,7 @@
       `;
 
       document.getElementById("openNow").addEventListener("click", function () {
-        window.location.href = "https://app.socialauthoritycollective.com/login";
+        window.location.href = "https://app.socialauthoritycollective.com/communities/";
       });
     })();
   </script>
